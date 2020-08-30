@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/categories_screen.dart';
+import 'screens/categories_screen.dart';
+import 'screens/category_meals_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,17 +14,25 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.amber,
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
-        fontFamily: 'Raleway',
+        fontFamily: "Roboto",
         textTheme: ThemeData.light().textTheme.copyWith(
               headline6: TextStyle(
                 fontSize: 20,
-                fontFamily: 'RobotoCondensed',
+                fontFamily: "Roboto",
                 fontWeight: FontWeight.bold,
               ),
             ),
       ),
       title: 'Meals App',
-      home: CategoryScreen(),
+      //home: CategoryScreen(),
+      // in case you want custom initial route
+      initialRoute: '/',
+      routes: {
+        // slash ('/') is Home by default, so even if you remove home argument above
+        // it will still work
+        '/': (ctx) => CategoryScreen(),
+        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
+      },
     );
   }
 }
