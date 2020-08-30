@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/screens/meal_detail_screen.dart';
 
 class MealsItem extends StatelessWidget {
   final String title;
@@ -7,13 +8,15 @@ class MealsItem extends StatelessWidget {
   final Complexity complexity;
   final Affordability affordability;
   final int duration;
+  final String id;
 
   MealsItem(
       {@required this.title,
       @required this.imageUrl,
       @required this.complexity,
       @required this.affordability,
-      @required this.duration});
+      @required this.duration,
+      @required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +39,7 @@ class MealsItem extends StatelessWidget {
     return InkWell(
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(15),
-      onTap: openMealDetails,
+      onTap: () => openMealDetails(context),
       child: Column(
         children: [
           Card(
@@ -53,11 +56,14 @@ class MealsItem extends StatelessWidget {
                       topLeft: Radius.circular(15),
                       topRight: Radius.circular(15),
                     ),
-                    child: Image.network(
-                      imageUrl,
-                      height: 250,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
+                    child: Hero(
+                      tag: imageUrl,
+                      child: Image.network(
+                        imageUrl,
+                        height: 250,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   Positioned(
@@ -139,5 +145,13 @@ class MealsItem extends StatelessWidget {
     );
   }
 
-  void openMealDetails() {}
+  void openMealDetails(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      MealDetails.routeName,
+      arguments: {
+        'title': title,
+        'id': id,
+      },
+    );
+  }
 }

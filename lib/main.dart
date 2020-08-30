@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/screens/meal_detail_screen.dart';
 import 'screens/categories_screen.dart';
 import 'screens/category_meals_screen.dart';
 
@@ -27,11 +28,13 @@ class MyApp extends StatelessWidget {
       //home: CategoryScreen(),
       // in case you want custom initial route
       initialRoute: '/',
+      //you can also use onGenerateRoute and onUnknownRoute sometimes (Lec 169)
       routes: {
         // slash ('/') is Home by default, so even if you remove home argument above
         // it will still work
         '/': (ctx) => CategoryScreen(),
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
+        MealDetails.routeName: (ctx) => MealDetails(),
       },
     );
   }
