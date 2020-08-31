@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/screens/meal_detail_screen.dart';
+import './screens/filters_screen.dart';
+import './screens/meal_detail_screen.dart';
+import './screens/tabs_screen.dart';
 import 'screens/categories_screen.dart';
 import 'screens/category_meals_screen.dart';
 
@@ -32,9 +34,10 @@ class MyApp extends StatelessWidget {
       routes: {
         // slash ('/') is Home by default, so even if you remove home argument above
         // it will still work
-        '/': (ctx) => CategoryScreen(),
+        '/': (ctx) => TabsScreen(),
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
         MealDetails.routeName: (ctx) => MealDetails(),
+        FiltersScreen.routeName: (ctx) => FiltersScreen(),
       },
     );
   }
