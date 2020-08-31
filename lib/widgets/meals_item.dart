@@ -9,6 +9,7 @@ class MealsItem extends StatelessWidget {
   final Affordability affordability;
   final int duration;
   final String id;
+  final Function removeItem;
 
   MealsItem(
       {@required this.title,
@@ -16,6 +17,7 @@ class MealsItem extends StatelessWidget {
       @required this.complexity,
       @required this.affordability,
       @required this.duration,
+      @required this.removeItem,
       @required this.id});
 
   @override
@@ -152,6 +154,10 @@ class MealsItem extends StatelessWidget {
         'title': title,
         'id': id,
       },
-    );
+    ).then((value) {
+      if (value != null) {
+        removeItem(value);
+      }
+    });
   }
 }
