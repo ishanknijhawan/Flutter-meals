@@ -4,7 +4,7 @@ class FavoritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Favorites tab'),
+      child: Text('No favorite dishes added!'),
     );
   }
 }

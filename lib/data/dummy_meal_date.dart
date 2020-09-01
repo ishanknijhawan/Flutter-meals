@@ -25,14 +25,14 @@ const DUMMY_CATEGORIES = const [
     color: Colors.amber,
   ),
   Category(
-    id: 'c5',
-    title: 'Light & Lovely',
-    color: Colors.blue,
-  ),
-  Category(
     id: 'c6',
     title: 'Exotic',
     color: Colors.green,
+  ),
+  Category(
+    id: 'c5',
+    title: 'Light & Lovely',
+    color: Colors.blue,
   ),
   Category(
     id: 'c7',
