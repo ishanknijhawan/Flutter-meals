@@ -3,6 +3,11 @@ import 'package:meals_app/data/dummy_meal_date.dart';
 
 class MealDetails extends StatelessWidget {
   static const routeName = '/meal_details';
+  final Function toggleFavs;
+  final Function isFavorite;
+
+  MealDetails(this.toggleFavs, this.isFavorite);
+
   @override
   Widget build(BuildContext context) {
     final routeArgs =
@@ -14,6 +19,16 @@ class MealDetails extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(selectedMeal.title),
+        actions: [
+          IconButton(
+            icon: isFavorite(mealId)
+                ? Icon(Icons.favorite)
+                : Icon(Icons.favorite_border),
+            onPressed: () {
+              toggleFavs(mealId);
+            },
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(

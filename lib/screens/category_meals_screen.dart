@@ -52,20 +52,27 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
       appBar: AppBar(
         title: Text(categoryTitle),
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          return MealsItem(
-            title: displayedMeals[index].title,
-            affordability: displayedMeals[index].affordability,
-            complexity: displayedMeals[index].complexity,
-            duration: displayedMeals[index].duration,
-            imageUrl: displayedMeals[index].imageUrl,
-            id: displayedMeals[index].id,
-            removeItem: _removeMeal,
-          );
-        },
-        itemCount: displayedMeals.length,
-      ),
+      body: displayedMeals.isEmpty
+          ? Center(
+              child: Text(
+                'Oops! No meals here',
+                style: TextStyle(fontSize: 20),
+              ),
+            )
+          : ListView.builder(
+              itemBuilder: (context, index) {
+                return MealsItem(
+                  title: displayedMeals[index].title,
+                  affordability: displayedMeals[index].affordability,
+                  complexity: displayedMeals[index].complexity,
+                  duration: displayedMeals[index].duration,
+                  imageUrl: displayedMeals[index].imageUrl,
+                  id: displayedMeals[index].id,
+                  removeItem: _removeMeal,
+                );
+              },
+              itemCount: displayedMeals.length,
+            ),
     );
   }
 }

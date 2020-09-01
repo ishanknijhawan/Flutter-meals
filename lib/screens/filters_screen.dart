@@ -49,7 +49,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
         title: Text('Filters'),
         actions: [
           IconButton(
-            icon: Icon(Icons.save),
+            icon: Icon(Icons.check),
             onPressed: () {
               final Map<String, bool> _filters = {
                 'gluten': isGlutenFree,
