@@ -53,6 +53,13 @@ class MealsItem extends StatelessWidget {
             child: Column(children: [
               Stack(
                 children: <Widget>[
+                  Container(
+                    height: 250,
+                    width: double.infinity,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
                   ClipRRect(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(15),

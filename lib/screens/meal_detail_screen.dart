@@ -112,7 +112,30 @@ class MealDetails extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).pop(mealId);
+          showDialog(
+              context: context,
+              builder: (_) {
+                return AlertDialog(
+                  title: Text('Delete dish'),
+                  content:
+                      Text('Do you want to delete this dish temporarily ?'),
+                  actions: [
+                    FlatButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: Text('No'),
+                    ),
+                    FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pop(mealId);
+                      },
+                      child: Text('Yes'),
+                    ),
+                  ],
+                );
+              },
+              barrierDismissible: true);
+          //Navigator.of(context).pop(mealId);
         },
         child: Icon(Icons.delete),
       ),
